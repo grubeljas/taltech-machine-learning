@@ -10,10 +10,10 @@ class PathFinder:
         self.goal = goal
 
     def find_neighbors(self, current: tuple):
-        return [(current[0], current[1] + 1),
-                (current[0], current[1] - 1),
-                (current[0] + 1, current[1]),
-                (current[0] - 1, current[1])]
+        return [(current[0], current[1] - 1),
+                (current[0], current[1] + 1),
+                (current[0] - 1, current[1]),
+                (current[0] + 1, current[1])]
 
     def my_search(self):
         frontier = Queue()
@@ -77,7 +77,7 @@ class PathFinder:
     def find_path(self):
         current = self.goal
         if not current:
-            return current
+            return current  #None path
         path = []
         while current != self.start:
             path.append(current)
@@ -92,7 +92,7 @@ class PathFinder:
 
 
 def h(node, goal):
-    return abs(node[0] - goal[0]) + abs(goal[0] - goal[1])
+    return abs(node[0] - goal[0]) + abs(goal[1] - goal[1])
 
 
 def listToString(list):
@@ -158,10 +158,9 @@ goal3 = (295, 257)
 
 maps_variants = ["cave300x300", "cave600x600", "cave900x900"]
 
-with open(maps_variants[0]) as f:
+with open(maps_variants[2]) as f:
     map_data = [line.strip() for line in f.readlines() if len(line) > 1]
 
-path = PathFinder(lava_map1, start1)
+path = PathFinder(map_data, start2)
 print(path.goal)
 print(path.my_search())
-print(path.goal)
