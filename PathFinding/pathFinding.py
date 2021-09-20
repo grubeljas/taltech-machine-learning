@@ -170,7 +170,7 @@ n_of_steps = 0
 for i in range(n):
     path = PathFinder(map_data, start2, goal5)
     tic = time.perf_counter()
-    n_of_steps += len(path.greedy())
+    n_of_steps += len(path.astar())
     toc = time.perf_counter()
     n_of_times += toc - tic
 n_of_times /= n
