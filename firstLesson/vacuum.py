@@ -1,4 +1,4 @@
-import random
+import random, time
 
 
 class Sim:
@@ -66,7 +66,9 @@ class AgentSmart:
         else:
             return "NoOp"
 
-
+tic = time.perf_counter()
 sim = Sim(AgentSmart())
 sim.run()
 print(sim.perf(10))
+toc = time.perf_counter()
+print()

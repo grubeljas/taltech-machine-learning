@@ -1,4 +1,5 @@
 from queue import Queue, PriorityQueue
+import time
 
 
 class PathFinder:
@@ -87,7 +88,7 @@ class PathFinder:
             self.map[current[0]] = listToString(row)
         path.append(self.start)  # optional
         path.reverse()
-        print('\n'.join(self.map))
+        #print('\n'.join(self.map))
         return path
 
 
@@ -155,12 +156,23 @@ start1 = (14, 16)
 goal1 = (1, 13)
 start2 = (2, 2)
 goal3 = (295, 257)
+goal4 = (598, 595)
+goal5 = (898, 895)
 
 maps_variants = ["cave300x300", "cave600x600", "cave900x900"]
 
 with open(maps_variants[2]) as f:
     map_data = [line.strip() for line in f.readlines() if len(line) > 1]
 
-path = PathFinder(map_data, start2)
-print(path.goal)
-print(path.my_search())
+n = 100
+n_of_times = 0
+n_of_steps = 0
+for i in range(n):
+    path = PathFinder(map_data, start2, goal5)
+    tic = time.perf_counter()
+    n_of_steps += len(path.greedy())
+    toc = time.perf_counter()
+    n_of_times += toc - tic
+n_of_times /= n
+n_of_steps /= n
+print(f"{toc-tic:04f}", n_of_steps)
