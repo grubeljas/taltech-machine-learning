@@ -43,7 +43,6 @@ class NQPosition:
             for j in range(i + 1, self.n):
                 if abs(i - j) == abs(board[i] - board[j]):
                     h += 1
-        #TODO идея от каждой королевы провести 8 лучей пока не встретит королеву или край карты
         return h
 
     def make_move(self, move):
@@ -72,7 +71,7 @@ class NQPosition:
         return '\n'.join(board)
 
 
-pos = NQPosition(6)  # test with the tiny 4x4 board first
+pos = NQPosition(7)  # test with the tiny 4x4 board first
 print("Initial position value", pos.value())
 best_pos, best_value = hill_climbing(pos)
 print("Final value", best_value)
