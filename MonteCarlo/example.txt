@@ -1,0 +1,24 @@
+
+possible moves are 0-6 if
+
+PLAYER'S TURN
+Your move? 4
+|       |
+|  X    |
+|  OO   |
+|  OX   |
+|X XO   |
+|OXOXX  |
+|0123456|
+
+COMPUTER'S TURN
+{0: 116, 1: 200, 2: 101, 3: 110, 4: 97, 5: 130, 6: 144.0}
+|       |
+|  X    |
+|  OO   |
+|  OX   |
+|XOXO   |
+|OXOXX  |
+|0123456|
+
+winner is computer
