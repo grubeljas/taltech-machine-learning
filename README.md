@@ -64,3 +64,37 @@ NQPosition
 I have learned how hill climbing works.
 It finds local maximum, so we need to restart simulation
 with different position randomly. 
+
+
+ResolutionMethod
+
+First Problem
+
+Kb: [['-p', 'q'], ['-l', '-m', 'p'], ['-b', '-l', 'm'], ['-a', '-p', 'l'], ['-a', '-b', 'l'], ['b'], ['a']]
+
+and Neg Alpha: -q
+
+Returns True
+
+Second Problem
+
+KB: ['-outside_power', 'w5'], ['outside_power', '-w5'], ['-w5', '-cb1', 'w3'], ['-w3', '-cb1', 'w5'],
+                     ['-w5', '-cb2', 'w6'], ['-w6', 'p2'], ['-w3', 'p1'], ['-w3', 's1', 'w2'], ['-w3', '-s1', 'w1'],
+                     ['s1', '-w1'], ['-s1', '-w2'], ['-w2', 's2', 'w0'], ['-w1', '-s2', 'w0'], ['w2', 's2', '-w0'],
+                     ['w1', '-s2', '-w0'], ['-w0', 'l1'], ['w0', '-l1'], ['-w4', 'l2'], ['-l1', 'w0'], ['w3', '-cb1'],
+                     ['-w3', '-s3', 'w4'], ['-l2', 'w4'], ['s3', '-w4']
+
+1. question KB += [['outside_power'], ['cb2']], ['-p2']
+
+neg alpha = '-p2' 
+returns True
+
+2. question KB += [['outside_power'], ['cb1'], ['-s1'], ['s2']]
+
+neg alpha = 'l1' 
+never returns anything
+
+3. question KB += [['outside_power'], ['-l1'], ['s1'], ['s2']]
+
+neg alpha = 'cb1' 
+returns False

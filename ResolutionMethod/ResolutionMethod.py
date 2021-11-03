@@ -90,9 +90,9 @@ def resolution_solver(KB, neg_alpha):
             # if clause is a subset of current, then go back to the start of the loop
             # to pick new current
         # combine current clause with all clauses we've already seen
+        if skip:
+            break
         for clause in done:
-            if skip:
-                break
             # apply resolution rule
             resolvents = resolve(current, clause)
             if resolvents == "no results":
@@ -103,6 +103,8 @@ def resolution_solver(KB, neg_alpha):
                 # 1. resolvent is empty: proof found that KB->alpha!
                 if len(resolvent) == 0:
                     return True
+                if resolvent == ['-w0'] or '-w1' in resolvent:
+                    print(resolvent)
                 # 2. resolvent is always true: throw it away, useless clause
                 if tautology(resolvent):
                     continue
@@ -130,6 +132,18 @@ if __name__ == '__main__':
         break
         # print(simple_resolution_solver([a], 'd'))
 
-    test = [['-p', 'q'], ['-l', '-m', 'p'], ['-b', '-l', 'm'], ['-a', '-p', 'l'], ['-a', '-b', 'l'], ['b'], ['a']]
+    test_problem1 = [['-p', 'q'], ['-l', '-m', 'p'], ['-b', '-l', 'm'],
+                     ['-a', '-p', 'l'], ['-a', '-b', 'l'], ['b'], ['a']]
 
-    print(resolution_solver(test, ['-q']))
+    print(resolution_solver(test_problem1, ['-q']))
+
+    test_problem2 = [['-outside_power', 'w5'], ['outside_power', '-w5'], ['-w5', '-cb1', 'w3'], ['-w3', '-cb1', 'w5'],
+                     ['-w5', '-cb2', 'w6'], ['-w6', 'p2'], ['-w3', 'p1'], ['-w3', 's1', 'w2'], ['-w3', '-s1', 'w1'],
+                     ['s1', '-w1'], ['-s1', '-w2'], ['-w2', 's2', 'w0'], ['-w1', '-s2', 'w0'], ['w2', 's2', '-w0'],
+                     ['w1', '-s2', '-w0'], ['-w0', 'l1'], ['w0', '-l1'], ['-w4', 'l2'], ['-l1', 'w0'], ['w3', '-cb1'],
+                     ['-w3', '-s3', 'w4'], ['-l2', 'w4'], ['s3', '-w4']]
+
+    print(resolution_solver(test_problem2 + [['outside_power'], ['cb2']], ['-p2']))
+    print(resolution_solver(test_problem2 + [['outside_power'], ['-l1'], ['s1'], ['s2']], ['cb1']))
+    print(resolution_solver(test_problem2 + [['outside_power'], ['cb1'], ['-s1'], ['s2']], ['l1']))
+
