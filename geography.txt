@@ -1,0 +1,41 @@
+(north(X,Y) & north(Y,Z)) => north(X,Z).
+(east(X,Y) & east(Y,Z)) => east(X,Z).
+(south(X,Y) & south(Y,Z)) => south(X,Z).
+(west(X,Y) & west(Y,Z)) => west(X,Z).
+near(X,Y) => near(Y,X).
+north(Y,X) => south(X,Y).
+north(Y,X) => -north(X,Y).
+south(Y,X) => north(X,Y).
+south(Y,X) => -south(X,Y).
+west(Y,X) => east(X,Y).
+west(Y,X) => -west(X,Y).
+east(Y,X) => west(X,Y).
+east(Y,X) => -east(X,Y).
+(north(X,Y) & east(Y,Z)) => north(X,Z).
+(north(X,Y) & east(Y,Z)) => east(X,Z).
+(north(X,Y) & west(Y,Z)) => north(X,Z).
+(north(X,Y) & west(Y,Z)) => west(X,Z).
+(east(X,Y) & south(Y,Z)) => east(X,Z).
+(east(X,Y) & south(Y,Z)) => south(X,Z).
+(south(X,Y) & west(Y,Z)) => south(X,Z).
+(south(X,Y) & west(Y,Z)) => west(X,Z).
+
+
+east(gondor, mordor).
+near(gondor, mordor).
+north(gondor, rohan).
+near(gondor, rohan).
+south(lothlorien, rohan).
+near(lothlorien, rohan).
+east(maria, lothlorien).
+near(maria, lothlorien).
+near(maria, highpass).
+north(maria, highpass).
+near(rivendell, highpass).
+near(rivendell, bree).
+west(rivendell, bree).
+near(bree, shire).
+east(shire, bree).
+
+north(shire, mordor).
+west(shire, mordor).
