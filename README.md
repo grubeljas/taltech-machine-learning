@@ -98,3 +98,7 @@ never returns anything
 
 neg alpha = 'cb1' 
 returns False
+
+NaiveBayes
+
+From 100 tests, 96 are correct and 4 are giving error. Finishing in, approximately, 0.095 seconds.
