@@ -102,3 +102,10 @@ returns False
 NaiveBayes
 
 From 100 tests, 96 are correct and 4 are giving error. Finishing in, approximately, 0.095 seconds.
+
+NeuralNetwork
+
+Sad picture.
+original - ![img.png](img.png)
+first weight of 1st layer - ![img_1.png](img_1.png)
+first wieght of 2nd layer - ![img_2.png](img_2.png)
